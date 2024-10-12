@@ -1,0 +1,16 @@
+{% extends "core/base.html" %}
+{% block title %}Home{% endblock  %}
+{% block content %}
+
+    <div class="p-8">
+        <h1 class="text-center text-3xl">You have once again entered the world of survival horror!</h1>
+        <h2 class="text-center text-2xl text-red-600">Good Luck!!</h2>
+
+        {% for card in cards %}
+            <img src="{{ card.card_image.url }}" alt="" class="w-32">
+            <p class="text-teal-500">{{ card.card_name }}</p>
+        {% endfor %} 
+
+    </div>
+
+{% endblock  %}

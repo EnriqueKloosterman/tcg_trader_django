@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 class Card_Type(models.Model):
@@ -30,7 +31,8 @@ class Card(models.Model):
     card_cost = models.IntegerField()
     card_power = models.IntegerField()
     card_defense = models.IntegerField()
-    card_image = models.ImageField(upload_to='card_images/')
+    # card_image = models.ImageField(upload_to='card_images/')
+    card_image = CloudinaryField('image', blank=True, null=True)
     is_active = models.BooleanField(default=True)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)

@@ -15,6 +15,11 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Cloudinary imports
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -39,7 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'card',
-    'core',    
+    'core',
+    'cloudinary',  
     
     # after instaled apps
     'tailwind',
@@ -134,10 +140,17 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
-MEDIA_URL = 'media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+# MEDIA_URL = 'media/'
+# MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# CLoudinary integration
+cloudinary.config( 
+    cloud_name = "deumagcgr", 
+    api_key = "265114195132477", 
+    api_secret = "eO9Y24Rw73Z2o_0jdbW0pRrEGKo" 
+)

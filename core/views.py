@@ -6,7 +6,8 @@ def base(request):
     return render(request, 'core/base.html')
 
 def home(request):
-    cards = Card.objects.filter(is_active=True)[0:8]
+    cards = Card.objects.filter(is_active=True).order_by('?')[0:5]
+    # cards = Card.objects.filter(is_active=True).order_by('-created_at')[0:5]
     card_types = Card_Type.objects.all()
     factions = Faction.objects.all()
     

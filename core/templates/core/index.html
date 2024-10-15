@@ -7,11 +7,13 @@
         <h2 class="text-center text-2xl text-red-600">Good Luck!!</h2>
         <div class="container grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 rounded-md">
             {% for card in cards %}
-            <div class="p-2 bg-stone-200 rounded-md ">
-                <img src="{{ card.card_image.url }}" alt="" class="w-full">
-                <p class="text-sky-800 font-bold text-lg">{{ card.card_name }}</p>
-                <p>{{ card.card_type }}</p>
-                <p>{{ card.faction }}</p>
+            <div class="p-2 bg-stone-200 rounded-md">
+                <a href="{% url 'card:detail' card.id %}">
+                    <img src="{{ card.card_image.url }}" alt="" class="w-full hover:scale-150 shadow-lg hover:shadow-indigo-600/60">
+                    <p class="text-sky-800 font-bold text-lg">{{ card.card_name }}</p>
+                    <p>{{ card.card_type }}</p>
+                    <p>{{ card.faction }}</p>
+                </a>
             </div>
             {% endfor %} 
         </div>

@@ -1,0 +1,29 @@
+{% extends 'core/base.html' %}
+{% block title %}{{ card.card_name }}{% endblock  %}
+{% block content %}
+    <div class="md:grid md:grid-cols-5 gap-8 bg-stone-400 rounded-lg p-6">
+        <figure class="md:col-span-2">
+            <img src="{{ card.card_image.url }}" alt="{{ card.card_name }} card image" class="shadow-xl hover:shadow-sky-300/70 roumded-lg hover:scale-110" >
+        </figure>
+        <div class="md:col-span-3 bg-stone-200 p-8 rounded-lg">
+            <p class="text-3xl font-bold italic text-stone-800 mb-6">{{ card.card_name }}</p>
+            <div class="bg-stone-100 rounded-md p-2">
+                <p class="mb-6 text-xl text-gray-800 px-2">{{ card.faction }}</p>
+                <p class="mb-6 text-xl text-gray-800 px-2">{{ card.card_type }}</p>
+                {% if card.card_text %}
+                <p class="mb-6 text-xl text-gray-600 w-full bg-stone-50 p-6 px-2 rounded-md">{{ card.card_text }}</p>
+                {% endif %}
+                <p class="mb-6 text-xl text-gray-800 px-2 mt-10"><strong>Trader: </strong>{{ card.created_by }}</p>
+            </div>
+                {% if request.user == card.created_by %}
+                    <div class="mt-6 p-6 gap-8">
+                        <a href="#" class="inline-block mt-6 px-5 py-2 text-lg font-semibold bg-teal-600 text-white rounded-md mr-6">Edit</a>
+                        <a href="#" class="inline-block mt-6 px-3 py-2 text-lg font-semibold bg-red-500 text-white rounded-md">Delete</a>
+                    </div>
+                {% else %}
+                    <a href="#" class="inline-block mt-6 p-4 text-lg font-semibold bg-teal-600 text-white hover:bg-teal-700 rounded-lg">Contact Trader</a>
+                {% endif %}
+        </div>
+    </div>  
+
+{% endblock  %}

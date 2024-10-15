@@ -20,6 +20,13 @@ import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 
+# Evironment variables
+from decouple import config
+
+# SECRET_KEY = config('SECRET_KEY')
+# DEBUG = config('DEBUG', default=False, cast=bool)
+
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -32,6 +39,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 
 # Application definition
 
@@ -150,7 +160,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # CLoudinary integration
 cloudinary.config( 
-    cloud_name = "deumagcgr", 
-    api_key = "265114195132477", 
-    api_secret = "eO9Y24Rw73Z2o_0jdbW0pRrEGKo" 
+    cloud_name = config('CLOUDINARY_CLOUD_NAME'), 
+    api_key = config('CLOUDINARY_API_KEY'), 
+    api_secret = config('CLOUDINARY_API_SECRET'),
 )

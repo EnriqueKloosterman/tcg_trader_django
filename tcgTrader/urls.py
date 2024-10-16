@@ -19,9 +19,12 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(('core.urls', 'core'), namespace='core')),
     path('', include(('card.urls', 'card'), namespace='card')),
+    path('', include(('user_profile.urls', 'user_profile'), namespace='user_profile')),
     path("__reload__/", include("django_browser_reload.urls")),
+
 ] 

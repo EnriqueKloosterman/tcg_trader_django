@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required 
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from card.models import Card, Card_Type, Faction
 
 # Create your views here.
@@ -13,3 +13,5 @@ def user_profile(request):
         'factions': factions,
         'card_types': card_types
     })
+    
+

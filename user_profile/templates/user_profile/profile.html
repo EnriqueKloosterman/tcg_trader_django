@@ -8,15 +8,16 @@
                 <form method='POST' action="{% url 'user_profile:logout' %}" class="ml-auto">
                     {% csrf_token %}
                     <button 
-                        type="submit" 
-                        class="bg-red-500 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-md">
-                        Logout
-                    </button>
-                </form>
-            </div>
+                    type="submit" 
+                    class="bg-red-500 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-md">
+                    Logout
+                </button>
+            </form>
+        </div>
         {% endif %}
-
-        <h3 class="text-2-xl">{{ user.email }}</h3>
+        
+        <h3 class="text-2xl mb-6">{{ user.email }}</h3>
+        <a href="{% url 'card:new_card' %}" class="p-2 bg-indigo-600 text-white font-semibold rounded-md mt-6">Add Card</a>
 
         <h3 class="text-2xl text-center font-semibold italic">My Cards</h3>
         <div class="grid grid-col-1 md:grid-cols-3 lg:grid-cols-5 gap-4 p-5">

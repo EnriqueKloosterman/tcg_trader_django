@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Card, Card_Type, Faction
 from django.contrib.auth.decorators import login_required
 from .forms import NewCardForm, UpdateCardForm
+from django.db.models import Q
 
 
 # Create your views here.
@@ -15,10 +16,43 @@ def detail(request, pk):
     })
 
 
-@login_required
+
+from django.shortcuts import render
+from django.db.models import Q
+from .models import Card, Faction, Card_Type
+
 def card_list(request):
-    cards = Card.objects.all()
-    return render(request, 'cards/card_list.html', {'cards': cards})
+    query = request.GET.get('query', '')
+    faction_ids = request.GET.getlist('faction')  
+    card_type_ids = request.GET.getlist('card_type')  
+
+    factions = Faction.objects.all()
+    card_types = Card_Type.objects.all()
+    
+
+    cards = Card.objects.filter(is_active=True).order_by('card_name')
+
+    if faction_ids:
+        cards = cards.filter(faction_id__in=faction_ids)
+
+    if card_type_ids:
+        cards = cards.filter(card_type_id__in=card_type_ids)
+
+    if query:
+        cards = cards.filter(
+            Q(card_name__icontains=query) | 
+            Q(card_text__icontains=query)
+        )
+
+    return render(request, 'card/list.html', {
+        'cards': cards,
+        'factions': factions,
+        'card_types': card_types,
+        'selected_factions': [int(f) for f in faction_ids],
+        'selected_card_types': [int(ct) for ct in card_type_ids],
+        'query': query
+    })
+
 
 @login_required
 

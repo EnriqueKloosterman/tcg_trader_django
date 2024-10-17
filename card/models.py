@@ -31,7 +31,6 @@ class Card(models.Model):
     card_cost = models.IntegerField()
     card_power = models.IntegerField()
     card_defense = models.IntegerField()
-    # card_image = models.ImageField(upload_to='card_images/')
     card_image = CloudinaryField('image', blank=True, null=True)
     is_active = models.BooleanField(default=True)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)

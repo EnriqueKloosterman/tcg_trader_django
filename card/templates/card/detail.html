@@ -11,8 +11,16 @@
                 <p class="mb-6 text-xl text-gray-800 px-2">{{ card.faction }}</p>
                 <p class="mb-6 text-xl text-gray-800 px-2">{{ card.card_type }}</p>
                 {% if card.card_text %}
-                <p class="mb-6 text-xl text-gray-600 w-full bg-stone-50 p-6 px-2 rounded-md">{{ card.card_text }}</p>
+                    <p class="mb-6 text-xl text-gray-600 w-full bg-stone-50 p-6 px-2 rounded-md">{{ card.card_text }}</p>
                 {% endif %}
+                <p class="mb-6 text-xl text-gray-800 px-2"><strong>Coste: </strong>{{ card.card_cost }}</p>
+                {% if card.card_power %}
+                    <p class="mb-6 text-xl text-gray-800 px-2"><strong>Ataque: </strong>{{ card.card_power }}</p>
+                {% endif %}
+                {% if card.card_defense %}
+                    <p class="mb-6 text-xl text-gray-800 px-2"><strong>Defensa: </strong>{{ card.card_defense }}</p>
+                {% endif %}
+
                 <p class="mb-6 text-xl text-gray-800 px-2 mt-10"><strong>Trader: </strong>{{ card.created_by }}</p>
             </div>
                 {% if request.user == card.created_by %}
@@ -21,7 +29,7 @@
                         <a href="{% url 'card:delete' card.id %}" class="inline-block mt-6 px-3 py-2 text-lg font-semibold bg-red-500 text-white rounded-md">Delete</a>
                     </div>
                 {% else %}
-                    <a href="#" class="inline-block mt-6 p-4 text-lg font-semibold bg-teal-600 text-white hover:bg-teal-700 rounded-lg">Contact Trader</a>
+                    <a href="{% url 'conversation:new' card.id %}" class="inline-block mt-6 px-3 py-2 text-lg font-semibold bg-teal-600 text-white hover:bg-teal-700 rounded-lg">Contact Trader</a>
                 {% endif %}
         </div>
     </div>  

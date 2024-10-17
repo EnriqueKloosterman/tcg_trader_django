@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'card',
     'core',
+    'conversation',
     'user_profile',
     'cloudinary',  
     

@@ -23,35 +23,34 @@ from .models import Card, Faction, Card_Type
 
 def card_list(request):
     query = request.GET.get('query', '')
-    faction_ids = request.GET.getlist('faction')  
-    card_type_ids = request.GET.getlist('card_type')  
+    faction_id = request.GET.get('faction')
+    card_type_id = request.GET.get('card_type')
 
     factions = Faction.objects.all()
     card_types = Card_Type.objects.all()
-    
-
     cards = Card.objects.filter(is_active=True).order_by('card_name')
 
-    if faction_ids:
-        cards = cards.filter(faction_id__in=faction_ids)
-
-    if card_type_ids:
-        cards = cards.filter(card_type_id__in=card_type_ids)
-
+    if faction_id:
+        cards = cards.filter(faction_id=int(faction_id))
+    
+    if card_type_id:
+        cards = cards.filter(card_type_id=int(card_type_id))
+    
     if query:
         cards = cards.filter(
-            Q(card_name__icontains=query) | 
+            Q(card_name__icontains=query) |
             Q(card_text__icontains=query)
         )
 
-    return render(request, 'card/list.html', {
+    context = {
         'cards': cards,
         'factions': factions,
         'card_types': card_types,
-        'selected_factions': [int(f) for f in faction_ids],
-        'selected_card_types': [int(ct) for ct in card_type_ids],
+        'selected_faction': int(faction_id) if faction_id else None,
+        'selected_card_type': int(card_type_id) if card_type_id else None,
         'query': query
-    })
+    }
+    return render(request, 'card/list.html', context)
 
 
 @login_required

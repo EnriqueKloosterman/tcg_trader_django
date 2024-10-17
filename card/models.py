@@ -17,7 +17,7 @@ class Faction(models.Model):
     faction_name = models.CharField(max_length=100)
     
     class Meta:
-        ordering = ['faction_name'] # ordena las categorias por nombre
+        ordering = ['faction_name'] 
         verbose_name_plural = 'Faction'
 
     def __str__(self):

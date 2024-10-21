@@ -3,7 +3,7 @@
 {% block title %}Browse Cards{% endblock %}
 
 {% block content %}
-    <div class="pb-6 grid grid-cols-5 gap-4 bg-gray-50 rounded-md p-6 shadow-md">
+    <div class="pb-6 grid grid-cols-1 md:grid-cols-5 gap-4 bg-gray-50 rounded-md p-6 shadow-md">
         <div class="col-span-1 bg-white rounded-lg shadow-md p-4">
             <form id="filter-form" action="{% url 'card:list' %}" method="get">
                 <input type="text" name="query" class="w-full p-4 border border-gray-300 rounded-md shadow-sm" 
@@ -62,7 +62,7 @@
         </div>
 
         <div class="col-span-4">
-            <div class="grid grid-cols-4 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 {% for card in cards %}
                     <div class="bg-white rounded-md shadow-lg transition-transform transform hover:scale-105">
                         <a href="{% url 'card:detail' card.id %}">

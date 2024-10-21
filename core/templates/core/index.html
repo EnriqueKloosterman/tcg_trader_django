@@ -3,19 +3,23 @@
 {% block content %}
 
     <div class="p-8">
-        <h1 class="text-center text-3xl">You have once again entered the world of survival horror!</h1>
-        <h2 class="text-center text-2xl text-red-600">Good Luck!!</h2>
-        <div class="container grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 rounded-md">
-            {% for card in cards %}
-            <div class="p-2 bg-stone-200 rounded-md">
-                <a href="{% url 'card:detail' card.id %}">
-                    <img src="{{ card.card_image.url }}" alt="" class="w-full hover:scale-150 shadow-lg hover:shadow-indigo-600/60">
-                    <p class="text-sky-800 font-bold text-lg">{{ card.card_name }}</p>
-                    <p>{{ card.card_type }}</p>
-                    <p>{{ card.faction }}</p>
-                </a>
+        <div class="container-lg bg-slate-200 rounded-md p-8">
+            <h2 class="text-center text-3xl font-semibold text-red-600 mb-5">Featured Cards</h2>
+            <div class="container grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 rounded-md">
+                {% for card in cards %}
+                <div class="p-2 bg-stone-100 rounded-md">
+                    <a href="{% url 'card:detail' card.id %}">
+                        <img src="{{ card.card_image.url }}" alt="" class="w-full hover:scale-150 shadow-lg hover:shadow-indigo-600/60">
+                        <p class="text-sky-800 font-bold text-lg">{{ card.card_name }}</p>
+                        <p>{{ card.card_type }}</p>
+                        <p>{{ card.faction }}</p>
+                    </a>
+                </div>
+                {% endfor %} 
             </div>
-            {% endfor %} 
+        </div>
+        <div class="container-lg bg-slate-200 rounded-md p-8">
+        
         </div>
         <div class="flex justify-center mt-8">
             <a href="{% url 'card:list' %}" class="text-center font-semibold bg-teal-600 text-white p-2 rounded-md">All Cards</a>

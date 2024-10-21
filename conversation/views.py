@@ -3,6 +3,7 @@ from card.models import Card
 from .models import Conversation, Message
 from .forms import MessageForm
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 # Create your views here.
 @login_required
@@ -49,10 +50,11 @@ def inbox(request):
 
 @login_required
 def detail(request, pk):
-    conversation = Conversation.objects.filter(members__in=[request.user.id]).get(pk=pk)
+    conversation = get_object_or_404(Conversation, pk=pk, members=request.user)
 
     if request.method == 'POST':
         form = MessageForm(request.POST)
+
         if form.is_valid():
             conversation_message = form.save(commit=False)
             conversation_message.conversation = conversation
@@ -65,7 +67,9 @@ def detail(request, pk):
     else:
         form = MessageForm()
 
+
     return render(request, 'conversation/detail.html', {
         'conversation': conversation,
         'form': form
     })
+

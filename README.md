@@ -68,7 +68,6 @@ CLOUDINARY_API_SECRET=<api_secret>
 
 ## 📦 Dependencias del Proyecto
 
-Las dependencias principales se encuentran en el archivo `requirements.txt`. Algunas de las más relevantes son:
 - Django
 - Tailwind CSS
 - Django Cloudinary Storage

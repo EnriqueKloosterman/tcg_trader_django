@@ -43,7 +43,8 @@ CLOUDINARY_API_SECRET=<api_secret>
 2. **Crear un entorno virtual e instalar dependencias:**
    ```bash
    python -m venv venv
-   source venv/bin/activate  # En Windows: venv\Scripts\activate
+   source venv/bin/activate
+   En Windows: venv\Scripts\activate
    pip install -r requirements.txt
    ```
 

@@ -1,5 +1,5 @@
 
-# 🃏 TCG Trader
+#  TCG Trader
 
 **TCG Trader** es una aplicación creada con **Django** y **Tailwind CSS** que permite a los usuarios:
 - **Registrarse** y crear su perfil.
@@ -10,7 +10,7 @@ Este proyecto busca fomentar una comunidad de amantes de los juegos de cartas a 
 
 ---
 
-## 🚀 Requisitos de instalación
+##  Requisitos de instalación
 
 ### 1. Dependencias principales:
 - Python 3.8+ 
@@ -29,11 +29,11 @@ CLOUDINARY_API_KEY=<api_key>
 CLOUDINARY_API_SECRET=<api_secret>
 ```
 
-💡 **Nota:** Regístrate en [Cloudinary](https://cloudinary.com/) para obtener tus credenciales API.
+ **Nota:** Regístrate en [Cloudinary](https://cloudinary.com/) para obtener tus credenciales API.
 
 ---
 
-## 🛠️ Instrucciones de Instalación
+##  Instrucciones de Instalación
 
 1. **Clonar el repositorio:**
    ```bash
@@ -66,7 +66,7 @@ CLOUDINARY_API_SECRET=<api_secret>
 
 ---
 
-## 📦 Dependencias del Proyecto
+##  Dependencias del Proyecto
 
 - Django
 - Tailwind CSS
@@ -74,7 +74,7 @@ CLOUDINARY_API_SECRET=<api_secret>
 
 ---
 
-## 🔧 Troubleshooting
+##  Troubleshooting
 
 - **Error de Tailwind:** Si los estilos no se aplican correctamente, asegúrate de que Tailwind está corriendo con `python manage.py tailwind start`.
 - **Migraciones fallidas:** Si encuentras problemas al migrar la base de datos, intenta eliminar las migraciones y volver a generarlas:
@@ -86,14 +86,14 @@ CLOUDINARY_API_SECRET=<api_secret>
 
 ---
 
-## 📬 Contacto
+##  Contacto
 
 Si tienes preguntas o necesitas ayuda, no dudes en contactarme:  
-📧 **kloostermanen@gmail.com**
+ **kloostermanen@gmail.com**
 
 ---
 
-## 📄 Licencia
+##  Licencia
 
 Este proyecto se distribuye bajo la licencia MIT. Puedes utilizar, modificar y distribuir el código bajo los términos de esta licencia.
 
